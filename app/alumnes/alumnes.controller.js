@@ -53,7 +53,7 @@ angular.module('alumnes')
                         resetForm();
                         //set input to untouched angularjs TODO
                         $scope.loadingCreate = false;
-                        ToastCreate();
+                        Toast('s\'ha creat correctament!!');
                     }, (error) => {
                         $scope.error = true;
                     });
@@ -65,7 +65,8 @@ angular.module('alumnes')
                 alumnesAPI.delete(id).then((response) => {
                     alumnesAPI.get().then((response) => {
                         $scope.alumnes = response.data;
-                        ToastDelete();
+                        Toast('s\'ha esborrat correctament!!');
+                        $scope.error = false;
                     }, (error) => {
                         $scope.error = true;
                     });
@@ -101,6 +102,7 @@ angular.module('alumnes')
                     alumnesAPI.get().then((response) => {
                         $scope.alumnes = response.data;
                         $scope.editing = null;
+                        Toast('s\'ha modificat correctament!!');
                     }, (error) => {
                         $scope.error = true;
                     });
@@ -157,23 +159,14 @@ angular.module('alumnes')
                 last = angular.extend({}, current);
             }
 
-            var ToastCreate = () => {
+            var Toast = (missatge, classe) => {
                 var pinTo = getToastPosition();
 
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('S\'ha creat l\'alumne!')
+                        .textContent(missatge)
                         .position(pinTo)
                         .hideDelay(3000));
             };
 
-            var ToastDelete = () => {
-                var pinTo = getToastPosition();
-
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent('S\'ha esborrat l\'alumne!')
-                        .position(pinTo)
-                        .hideDelay(3000));
-            };
         }]);

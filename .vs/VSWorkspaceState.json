@@ -4,12 +4,10 @@
     "\\app",
     "\\app\\alumnes",
     "\\app\\app",
+    "\\app\\components",
     "\\app\\directives",
-    "\\app\\header",
-    "\\app\\home",
-    "\\app\\primary",
     "\\app\\professors"
   ],
-  "SelectedNode": "\\app\\professors\\professors.controller.js",
+  "SelectedNode": "\\app\\components\\formulariProfessor.component.js",
   "PreviewInSolutionExplorer": false
 }

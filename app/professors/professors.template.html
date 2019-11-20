@@ -1,48 +1,8 @@
 <div style="width:90vw" layout="row">
     <md-content layout-padding flex="30">
-        <form name="nouProfessorForm" ng-submit="crearProfe(nouProfessorForm.$valid)">
-            <h2 class="md-headline">Crear nou Professor</h2>
-            <md-input-container class="md-block">
-                <label>Nom</label>
-                <input type="text" md-maxlength="20" required name="Nom" ng-model="nouProfe.Nom">
-                <div ng-messages="nouProfessorForm.Nom.$error">
-                    <div ng-message="required">Aquest camp és requerit.</div>
-                    <div ng-message="md-maxlength">El nom  no pot passar de 20 car�cters</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Cognom</label>
-                <input type="text" md-maxlength="40" required name="Cognom" ng-model="nouProfe.Cognom">
-                <div ng-messages="nouProfessorForm.Cognom.$error">
-                    <div ng-message="required">Aquest camp és requerit.</div>
-                    <div ng-message="md-maxlength">El nom  no pot passar de 40 car�cters</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>DNI</label>
-                <input type="text" ng-pattern="/[0-9]{8}[A-Z]{1}/" md-maxlength="9" required name="Dni" ng-model="nouProfe.Dni">
-                <div ng-messages="nouProfessorForm.Dni.$error">
-                    <div ng-message="required">Aquest camp és requerit.</div>
-                    <div ng-message="md-maxlength">El DNI ha d'estar ben formatat (NNNNNNNNA)</div>
-                    <div ng-message="pattern">El DNI ha d'estar ben formatat (NNNNNNNNA)</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Tel</label>
-                <input ng-blur="" type="text" ng-pattern="/[0-9]{9}/" md-maxlength="9" required name="Tel" ng-model="nouProfe.Tel">
-                <div ng-messages="nouProfessorForm.Tel.$error">
-                    <div ng-message="required">Aquest camp és requerit.</div>
-                    <div ng-message="pattern">El Telèfon ha d'estar ben formatat (NNNNNNNNN)</div>
-                    <div ng-message="md-maxlength">El Telèfon ha d'estar ben formatat (NNNNNNNNN)</div>
-                </div>
-            </md-input-container>
-            <div>
-                <md-button layout="row" layout-align="center center" class="md-primary md-raised" type="submit" aria-label="Enviar Fromulari">
-                    <div ng-if="!loadingCreate">Crear</div>
-                    <md-progress-circular class="md-primary md-hue-1" ng-if="loadingCreate" md-diameter="25" md-mode="indeterminate" value="..."></md-progress-circular>
-                </md-button>
-            </div>
-        </form>
+        <formulari-professor></formulari-professor>
     </md-content>
-    <cos-llistat array="professors" deleted="delete" updated="update"></cos-llistat>
+    <div layout="column" flex layout-padding layout-align="start center">
+        <cos-llistat items="professors"></cos-llistat>
+    </div>
 </div>

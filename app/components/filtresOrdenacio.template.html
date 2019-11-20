@@ -1,0 +1,10 @@
+<div layout="row" layout-align="start start">
+    <md-input-container>
+        <input type="text" placeholder="Filtrar..." ng-model="$ctrl.filtre" name="filtre" />
+    </md-input-container>
+    <md-input-container>
+        <md-select ng-model="$ctrl.ordre" placeholder="ordre">
+            <md-option ng-value="opcio" ng-repeat="opcio in $ctrl.opcions">{{ opcio }}</md-option>
+        </md-select>
+    </md-input-container>
+</div>
