@@ -16,6 +16,7 @@ angular.module('professors')
 
             $scope.$on('removed', deleteProfessor);
             $scope.$on('updated', updateProfessor);
+            $scope.$on('created', crearProfe);
 
             var fresh = () => {
                 professorsAPI.get().then((response) => {
@@ -27,33 +28,15 @@ angular.module('professors')
                 });
             };
             fresh();
-
-            var resetForm = () => {
-                $scope.nouProfe.Nom = "";
-                $scope.nouProfe.Cognom = "";
-                $scope.nouProfe.Dni = "";
-                $scope.nouProfe.Tel = "";
-                $scope.nouProfessorForm.$setPristine();
-                $scope.nouProfessorForm.Nom.$untouched = true;
-                $scope.nouProfessorForm.Nom.$touched = false;
-                $scope.nouProfessorForm.Cognom.$untouched = true;
-                $scope.nouProfessorForm.Cognom.$touched = false;
-                $scope.nouProfessorForm.Dni.$untouched = true;
-                $scope.nouProfessorForm.Dni.$touched = false;
-                $scope.nouProfessorForm.Tel.$untouched = true;
-                $scope.nouProfessorForm.Tel.$touched = false;
-            };
-
-            $scope.crearProfe = (isValid) => {
+            
+            function crearProfe(event, isValid, nouProfe){
                 if (isValid) {
-                    $scope.loadingCreate = true;
-                    professorsAPI.post($scope.nouProfe).then((response) => {
+                    professorsAPI.post(nouProfe).then((response) => {
                         professorsAPI.get().then((response) => {
                             $scope.professors = response.data;
                         }, (error) => {
                             $scope.error = true;
                         });
-                        resetForm();
                         $scope.loadingCreate = false;
                         ToastCreate();
                     }, (error) => {
