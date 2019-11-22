@@ -3,10 +3,12 @@ angular.module('professors')
         ['$scope',
         '$mdToast',
         'professorsAPI',
+        '$http',
         function professorsController(
             $scope,
             $mdToast,
-            professorsAPI
+            professorsAPI,
+            $http
         ) {
             $scope.loadingCreate = false;
             $scope.loadingDelete = null;
@@ -29,9 +31,9 @@ angular.module('professors')
             };
             fresh();
             
-            function crearProfe(event, isValid, nouProfe){
+            function crearProfe(event, isValid, nouProfe) {
                 if (isValid) {
-                    professorsAPI.post(nouProfe).then((response) => {
+                    $http.post('http://localhost:57915/api/Professors', nouProfe, { headers: { 'Content-Type': 'application/json' } }).then((response) => {
                         professorsAPI.get().then((response) => {
                             $scope.professors = response.data;
                         }, (error) => {
@@ -62,7 +64,6 @@ angular.module('professors')
             $scope.editing = null;
             
             function updateProfessor(event, id, canviProfessor) {
-                console.log(id + '' + canviProfessor.Nom);
                 professorsAPI.update(id, canviProfessor).then((response) => {
                     professorsAPI.get().then((response) => {
                         $scope.professors = response.data;

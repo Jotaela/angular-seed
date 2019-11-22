@@ -28,7 +28,7 @@ angular.module('myApp', [
                     },
                     'menu': {
                         templateUrl: './header/menu.template.html',
-                        controller: 'headerController'
+                        //controller: 'headerController'
                     },
                     'primary': {
                         templateUrl: './primary/primary.template.html',

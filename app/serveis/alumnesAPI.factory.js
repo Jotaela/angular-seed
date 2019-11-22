@@ -5,6 +5,7 @@ angular.module('serveis')
                 return $http.get('http://localhost:57915/api/Alumnes');
             },
             post: (content) => {
+                console.log(content);
                 return $http.post('http://localhost:57915/api/Alumnes', content, { headers: { 'Content-Type': 'application/json' } });
             },
             delete: (id) => {

@@ -1,4 +1,4 @@
 angular.module('header')
-    .controller('headerController', [function headerController() {
-
+    .controller('headerController', ['$state', '$scope', function headerController($state, $scope) {
+        $scope.currentItem = $state.current.name;
     }]);

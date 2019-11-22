@@ -6,7 +6,9 @@
     "\\app\\app",
     "\\app\\components",
     "\\app\\directives",
-    "\\app\\professors"
+    "\\app\\header",
+    "\\app\\professors",
+    "\\app\\serveis"
   ],
   "SelectedNode": "\\app\\components\\formulariProfessor.component.js",
   "PreviewInSolutionExplorer": false
