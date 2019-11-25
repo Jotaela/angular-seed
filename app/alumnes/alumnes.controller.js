@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('alumnes')
     .controller('alumnesController', [
         '$scope',
@@ -17,7 +19,7 @@ angular.module('alumnes')
             $scope.opcions = ['Nom', 'Cognom', 'Dni', 'Tel'];
             $scope.opcio = 'Nom';
 
-            var resetForm = () => {
+            var resetForm = function () {
                 $scope.nouAlumne.Nom = "";
                 $scope.nouAlumne.Cognom = "";
                 $scope.nouAlumne.Dni = "";
@@ -31,51 +33,50 @@ angular.module('alumnes')
                 $scope.nouAlumneForm.Dni.$touched = false;
                 $scope.nouAlumneForm.Tel.$untouched = true;
                 $scope.nouAlumneForm.Tel.$touched = false;
-            }
+            };
 
-            alumnesAPI.get().then((response) => {
+            alumnesAPI.get().then(function (response) {
                 $scope.alumnes = response.data;
                 $scope.loadingBody = false;
-            }, (error) => {
+            }, function (error) {
                 $scope.loadingBody = false;
                 $scope.error = true;
             });
 
-            $scope.crearAlumne = (isValid) => {
+            $scope.crearAlumne = function (isValid) {
                 if (isValid) {
                     $scope.loadingCreate = true;
-                    alumnesAPI.post($scope.nouAlumne).then((response) => {
-                        alumnesAPI.get().then((response) => {
+                    alumnesAPI.post($scope.nouAlumne).then(function (response) {
+                        alumnesAPI.get().then(function (response) {
                             $scope.alumnes = response.data;
-                        }, (error) => {
+                        }, function (error) {
                             $scope.error = true;
                         });
                         resetForm();
-                        //set input to untouched angularjs TODO
                         $scope.loadingCreate = false;
                         Toast('s\'ha creat correctament!!');
-                    }, (error) => {
+                    }, function (error) {
                         $scope.error = true;
                     });
                 }
             };
 
-            var deleteAlumne = (id) => {
+            var deleteAlumne = function (id) {
                 $scope.loadingDelete = id;
-                alumnesAPI.delete(id).then((response) => {
-                    alumnesAPI.get().then((response) => {
+                alumnesAPI.delete(id).then(function (response) {
+                    alumnesAPI.get().then(function (response) {
                         $scope.alumnes = response.data;
                         Toast('s\'ha esborrat correctament!!');
                         $scope.error = false;
-                    }, (error) => {
+                    }, function (error) {
                         $scope.error = true;
                     });
-                }, (error) => {
+                }, function (error) {
                     $scope.error = true;
                 });
             };
 
-            $scope.confirmDelete = (ev, id) => {
+            $scope.confirmDelete = function (ev, id) {
                 var confirm = $mdDialog.confirm()
                     .title('Estas segur que vols esborrar al Alumne amb la ID: ' + id + '?')
                     .textContent('l\'alumne que has seleccionat serà esborrat permanentment.')
@@ -95,30 +96,30 @@ angular.module('alumnes')
                 Cognom: "",
                 Dni: "",
                 Tel: ""
-            }
+            };
 
-            $scope.updateAlumne = (id) => {
-                alumnesAPI.update(id, $scope.canviAlumne).then((response) => {
-                    alumnesAPI.get().then((response) => {
+            $scope.updateAlumne = function (id) {
+                alumnesAPI.update(id, $scope.canviAlumne).then(function (response) {
+                    alumnesAPI.get().then(function (response) {
                         $scope.alumnes = response.data;
                         $scope.editing = null;
                         Toast('s\'ha modificat correctament!!');
-                    }, (error) => {
+                    }, function (error) {
                         $scope.error = true;
                     });
-                }, (error) => {
+                }, function (error) {
                     $scope.error = true;
-                })
-            }
+                });
+            };
 
-            $scope.initUpdateAlumne = (alumne, param) => {
+            $scope.initUpdateAlumne = function (alumne, param) {
                 $scope.editing = alumne.Id + param;
                 $scope.canviAlumne.Id = alumne.Id;
                 $scope.canviAlumne.Nom = alumne.Nom;
                 $scope.canviAlumne.Cognom = alumne.Cognom;
                 $scope.canviAlumne.Dni = alumne.Dni;
                 $scope.canviAlumne.Tel = alumne.Tel;
-            }
+            };
 
             // TOAST
 
@@ -131,7 +132,7 @@ angular.module('alumnes')
 
             var toastPosition = angular.extend({}, last);
 
-            var getToastPosition = () => {
+            var getToastPosition = function () {
                 sanitizePosition();
 
                 return Object.keys(toastPosition)
@@ -140,7 +141,7 @@ angular.module('alumnes')
                     }).join(' ');
             };
 
-            var sanitizePosition = () => {
+            var sanitizePosition = function () {
                 var current = toastPosition;
 
                 if (current.bottom && last.top) {
@@ -157,9 +158,9 @@ angular.module('alumnes')
                 }
 
                 last = angular.extend({}, current);
-            }
+            };
 
-            var Toast = (missatge, classe) => {
+            var Toast = function (missatge, classe) {
                 var pinTo = getToastPosition();
 
                 $mdToast.show(

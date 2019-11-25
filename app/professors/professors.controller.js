@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('professors')
     .controller('professorsController',
         ['$scope',
@@ -14,66 +16,52 @@ angular.module('professors')
             $scope.loadingDelete = null;
             $scope.loadingBody = true;
             $scope.error = false;
-
+            $scope.editing = null;
 
             $scope.$on('removed', deleteProfessor);
             $scope.$on('updated', updateProfessor);
             $scope.$on('created', crearProfe);
 
-            var fresh = () => {
-                professorsAPI.get().then((response) => {
+            var fresh = function () {
+                professorsAPI.get().then(function (response) {
                     $scope.professors = response.data;
                     $scope.loadingBody = false;
-                }, (error) => {
+                    $scope.loadingCreate = false;
+                    $scope.editing = null;
+                }, function (error) {
                     $scope.loadingBody = false;
                     $scope.error = true;
                 });
             };
             fresh();
-            
+
             function crearProfe(event, isValid, nouProfe) {
                 if (isValid) {
-                    $http.post('http://localhost:57915/api/Professors', nouProfe, { headers: { 'Content-Type': 'application/json' } }).then((response) => {
-                        professorsAPI.get().then((response) => {
-                            $scope.professors = response.data;
-                        }, (error) => {
-                            $scope.error = true;
-                        });
-                        $scope.loadingCreate = false;
+                    professorsAPI.post(nouProfe).then(function (response) {
+                        fresh();
                         ToastCreate();
-                    }, (error) => {
+                    }, function (error) {
                         $scope.error = true;
                     });
                 }
-            };
+            }
 
             function deleteProfessor(event, id){
                 $scope.loadingDelete = id;
-                professorsAPI.delete(id).then((response) => {
-                    professorsAPI.get().then((response) => {
-                        $scope.professors = response.data;
-                        ToastDelete();
-                    }, (error) => {
-                        $scope.error = true;
-                    });
-                }, (error) => {
+                professorsAPI.delete(id).then(function (response) {
+                    fresh();
+                }, function (error) {
                     $scope.error = true;
                 });
-            };
+            }
 
-            $scope.editing = null;
-            
+
             function updateProfessor(event, id, canviProfessor) {
-                professorsAPI.update(id, canviProfessor).then((response) => {
-                    professorsAPI.get().then((response) => {
-                        $scope.professors = response.data;
-                        $scope.editing = null;
-                    }, (error) => {
-                        $scope.error = true;
-                    });
-                }, (error) => {
+                professorsAPI.update(id, canviProfessor).then(function (response) {
+                    fresh();
+                }, function (error) {
                     $scope.error = true;
-                })
+                });
             }
 
             // TOAST
@@ -87,7 +75,7 @@ angular.module('professors')
 
             var toastPosition = angular.extend({}, last);
 
-            var getToastPosition = () => {
+            var getToastPosition = function () {
                 sanitizePosition();
 
                 return Object.keys(toastPosition)
@@ -96,7 +84,7 @@ angular.module('professors')
                     }).join(' ');
             };
 
-            var sanitizePosition = () => {
+            var sanitizePosition = function () {
                 var current = toastPosition;
 
                 if (current.bottom && last.top) {
@@ -113,9 +101,9 @@ angular.module('professors')
                 }
 
                 last = angular.extend({}, current);
-            }
+            };
 
-            var ToastCreate = () => {
+            var ToastCreate = function () {
                 var pinTo = getToastPosition();
 
                 $mdToast.show(
@@ -126,7 +114,7 @@ angular.module('professors')
                         .hideDelay(3000));
             };
 
-            var ToastDelete = () => {
+            var ToastDelete = function () {
                 var pinTo = getToastPosition();
 
                 $mdToast.show(

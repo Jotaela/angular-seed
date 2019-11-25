@@ -10,6 +10,7 @@ angular.module('myApp', [
     'primary',
     'professors',
     'alumnes',
+    'prova',
 ])
     .config([
         '$stateProvider',
@@ -20,7 +21,7 @@ angular.module('myApp', [
             $mdThemingProvider) {
 
             $stateProvider.state('layout', {
-                url: '',
+                url: '/',
                 views: {
                     'header': {
                         templateUrl: './header/header.template.html',
@@ -35,35 +36,50 @@ angular.module('myApp', [
                         controller: 'primaryController'
                     }
                 }
-            }).state('layout.professors', {
+            }).state('professors', {
                 url: '/professors',
-                views: {
-                    professors: {
+                views: {'header': {
+                        templateUrl: './header/header.template.html',
+                        controller: 'headerController'
+                    },
+                    'menu': {
+                        templateUrl: './header/menu.template.html',
+                        //controller: 'headerController'
+                    },
+                    'primary': {
                         templateUrl: './professors/professors.template.html',
                         controller: 'professorsController'
                     }
                 }
             }).state('layout.home', {
-                url: '/home',
+                url: 'home',
                 views: {
                     home: {
                         templateUrl: './home/home.template.html',
                         controller: 'homeController'
                     }
                 }
-            }).state('layout.alumnes', {
+            }).state('alumnes', {
                 url: '/alumnes',
                 views: {
-                    alumnes: {
+                    'primary': {
                         templateUrl: './alumnes/alumnes.template.html',
                         controller: 'alumnesController'
+                    }
+                }
+            }).state('layout.prova', {
+                url: '/prova',
+                views: {
+                    alumnes: {
+                        templateUrl: './prova/prova.template.html',
+                        controller: 'provaController'
                     }
                 }
             });
 
             $urlRouterProvider.otherwise('home');
 
-            
+
             $mdThemingProvider.theme('temaPrincipal').primaryPalette('blue')
                 .accentPalette('yellow')
                 .warnPalette('red')

@@ -1,21 +1,29 @@
+'use strict';
+
 angular.module('professors').
     component('formulariProfessor', {
         templateUrl: '/components/formulariProfessor.template.html',
         controller: function cosLlistatController($scope) {
-
-            $scope.crearProfe = (isValid) => {
+            $scope.crearProfe = function (isValid) {
+                var nouProfessor = {
+                    Nom: "",
+                    Cognom: "",
+                    Dni: "",
+                    Tel: ""
+                };
                 if (isValid) {
                     $scope.loadingCreate = true;
-                    $scope.$emit('created', isValid, $scope.nouProfe);
+                    var nouProfe = {Nom: $scope.nouProfe.Nom, Cognom: $scope.nouProfe.Cognom, Dni: $scope.nouProfe.Dni, Tel: $scope.nouProfe.Tel};
+                    $scope.$emit('created', isValid, nouProfe);
                     resetForm();
                 }
             };
 
-            $scope.updateProfessor = (id, profe) => {
+            $scope.updateProfessor = function (id, profe) {
                 $scope.$emit('updated', id, profe);
-            }
+            };
 
-            var resetForm = () => {
+            var resetForm = function () {
                 $scope.nouProfe.Nom = "";
                 $scope.nouProfe.Cognom = "";
                 $scope.nouProfe.Dni = "";
