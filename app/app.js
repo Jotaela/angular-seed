@@ -20,9 +20,13 @@ angular.module('myApp', [
             $urlRouterProvider,
             $mdThemingProvider) {
 
-            $stateProvider.state('layout', {
+            $stateProvider.state('landing-page', {
                 url: '/',
                 views: {
+                    'primary': {
+                        templateUrl: './primary/primary.template.html',
+                        controller: 'primaryController'
+                    },
                     'header': {
                         templateUrl: './header/header.template.html',
                         controller: 'headerController'
@@ -30,54 +34,35 @@ angular.module('myApp', [
                     'menu': {
                         templateUrl: './header/menu.template.html',
                         //controller: 'headerController'
-                    },
-                    'primary': {
-                        templateUrl: './primary/primary.template.html',
-                        controller: 'primaryController'
                     }
                 }
-            }).state('professors', {
-                url: '/professors',
-                views: {'header': {
-                        templateUrl: './header/header.template.html',
-                        controller: 'headerController'
-                    },
-                    'menu': {
-                        templateUrl: './header/menu.template.html',
-                        //controller: 'headerController'
-                    },
-                    'primary': {
+            }).state('landing-page.professors', {
+                url: 'professors',
+                views: {
+                    'primaryx': {
                         templateUrl: './professors/professors.template.html',
                         controller: 'professorsController'
                     }
                 }
-            }).state('layout.home', {
+            }).state('landing-page.home', {
                 url: 'home',
                 views: {
-                    home: {
+                    'primaryx': {
                         templateUrl: './home/home.template.html',
                         controller: 'homeController'
                     }
                 }
-            }).state('alumnes', {
-                url: '/alumnes',
+            }).state('landing-page.alumnes', {
+                url: 'alumnes',
                 views: {
-                    'primary': {
+                    'primaryx': {
                         templateUrl: './alumnes/alumnes.template.html',
                         controller: 'alumnesController'
                     }
                 }
-            }).state('layout.prova', {
-                url: '/prova',
-                views: {
-                    alumnes: {
-                        templateUrl: './prova/prova.template.html',
-                        controller: 'provaController'
-                    }
-                }
             });
 
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('/');
 
 
             $mdThemingProvider.theme('temaPrincipal').primaryPalette('blue')

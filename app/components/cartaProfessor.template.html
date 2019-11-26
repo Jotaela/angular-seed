@@ -1,14 +1,14 @@
 <md-card layout-padding class="md-priamry">
     <md-card-title>
         <md-card-title-text class="md-headline">
-            Professor {{ $ctrl.professor.Id }}
+            Professor {{ $ctrl.item.Id }}
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
         <md-list>
             <md-list-item>
-                Nom: <p ng-if="editing !=  $ctrl.professor.Id + 'Nom'" ng-dblclick="initUpdateProfessor($ctrl.professor , 'Nom')">{{  $ctrl.professor.Nom }}</p>
-                <input ng-enter="updateProfessor($ctrl.professor.Id, canviProfessor)" ng-if="editing ==  $ctrl.professor.Id + 'Nom'" type="text" name="professor.nom" ng-model="canviProfessor.Nom" />
+                Nom: <p ng-if="editing !=  $ctrl.item.Id + 'Nom'" ng-dblclick="initUpdateItem($ctrl.item , 'Nom')">{{  $ctrl.item.Nom }}</p>
+                <input ng-enter="updateItem($ctrl.item.Id, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Nom'" type="text" name="item.nom" ng-model="canviItem.Nom" />
             </md-list-item>
             <md-list-item>
                 Cognom: <p ng-if="editing !=  $ctrl.professor.Id + 'Cognom'" ng-dblclick="initUpdateProfessor($ctrl.professor, 'Cognom')">{{  $ctrl.professor.Cognom }}</p>

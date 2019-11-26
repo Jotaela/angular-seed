@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals":{
+    "Insert Global Here": true
+  },
+  "extends": "plugin:angular/johnpapa",
+  "rules": {
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": "off",
+    "no-debugger": "warn",
+    "angular/di": [ "error", "$inject" ]
+  }
+}

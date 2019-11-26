@@ -1,21 +1,23 @@
+'use strict';
+
 angular.module('professors').
-    component('cartaProfessor', {
-        templateUrl: '/components/cartaProfessor.template.html',
+    component('cartaItem', {
+        templateUrl: '/components/cartaItem.template.html',
         controller: function cosLlistatController($scope, $mdDialog) {
 
-            var deleteProfessor = (id) => {
+            var deleteItem = function (id) {
                 $scope.loadingDelete = id;
                 $scope.$emit('removed', id);
             };
 
-            $scope.updateProfessor = (id, profe) => {
-                $scope.$emit('updated', id, profe);
-            }
+            $scope.updateItem = function (id, item) {
+                $scope.$emit('updated', id, item);
+            };
 
-            $scope.confirmDelete = (ev, id) => {
+            $scope.confirmDelete = function (ev, id) {
                 var confirm = $mdDialog.confirm()
                     .title('Estas segur que vols esborrar al Professor amb la ID: ' + id + '?')
-                    .textContent('El professor que has seleccionat serà esborrat permanentment.')
+                    .textContent('El professor que has seleccionat serï¿½ esborrat permanentment.')
                     .ariaLabel('Esborrar professor')
                     .targetEvent(ev)
                     .ok('Sips! UwU')
@@ -23,7 +25,7 @@ angular.module('professors').
                 $mdDialog.show(confirm).then(function () {
                     deleteProfessor(id);
                 });
-            }
+            };
 
             $scope.canviProfessor = {
                 Id: null,
@@ -31,19 +33,19 @@ angular.module('professors').
                 Cognom: "",
                 Dni: "",
                 tel: ""
-            }
+            };
 
-            $scope.initUpdateProfessor = (profe, param) => {
+            $scope.initUpdateProfessor = function (profe, param) {
                 $scope.editing = profe.Id + param;
                 $scope.canviProfessor.Id = profe.Id;
                 $scope.canviProfessor.Nom = profe.Nom;
                 $scope.canviProfessor.Cognom = profe.Cognom;
                 $scope.canviProfessor.Dni = profe.Dni;
                 $scope.canviProfessor.tel = profe.tel;
-            }
+            };
 
         },
         bindings: {
-            professor: '<'
+            item: '<'
         }
     });
