@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('serveis')
-    .factory('professorsAPI', ($http) => {
-        let actions= {
-            get: () => {
+    .factory('professorsAPI', function ($http) {
+        return {
+            get: function () {
                 return $http.get('http://localhost:57915/api/Professors');
             },
-            post: (content) => {
-                return $http.post('http://localhost:57915/api/Professors', content, { headers: { 'Content-Type': 'application/json' } });
+            post: function (content) {
+                return $http.post('http://localhost:57915/api/Professors', content, {headers: {'Content-Type': 'application/json'}});
             },
-            delete: (id) => {
+            delete: function (id) {
                 return $http.delete('http://localhost:57915/api/Professors/' + id);
             },
-            update: (id, content) => {
+            update: function (id, content) {
                 return $http.put('http://localhost:57915/api/Professors/' + id, content);
             }
         };
-        return actions;
     });

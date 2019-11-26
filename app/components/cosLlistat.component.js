@@ -1,10 +1,13 @@
-angular.module('professors').
+'use strict';
+
+angular.module('components').
     component('cosLlistat', {
         templateUrl: '/components/cosLlistat.template.html',
         controller: function cosLlistatController($scope) {
-            $scope.opcions = ['Nom', 'Cognom', 'Dni', 'Tel'];
+
         },
         bindings: {
-            items: '<'
+            items: '<',
+            titol: '@'
         }
     });

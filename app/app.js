@@ -10,7 +10,7 @@ angular.module('myApp', [
     'primary',
     'professors',
     'alumnes',
-    'prova',
+    'components'
 ])
     .config([
         '$stateProvider',
@@ -24,15 +24,15 @@ angular.module('myApp', [
                 url: '/',
                 views: {
                     'primary': {
-                        templateUrl: './primary/primary.template.html',
+                        templateUrl: './pages/primary/primary.template.html',
                         controller: 'primaryController'
                     },
                     'header': {
-                        templateUrl: './header/header.template.html',
+                        templateUrl: './pages/header/header.template.html',
                         controller: 'headerController'
                     },
                     'menu': {
-                        templateUrl: './header/menu.template.html',
+                        templateUrl: './pages/header/menu.template.html',
                         //controller: 'headerController'
                     }
                 }
@@ -40,7 +40,7 @@ angular.module('myApp', [
                 url: 'professors',
                 views: {
                     'primaryx': {
-                        templateUrl: './professors/professors.template.html',
+                        templateUrl: './pages/professors/professors.template.html',
                         controller: 'professorsController'
                     }
                 }
@@ -48,7 +48,7 @@ angular.module('myApp', [
                 url: 'home',
                 views: {
                     'primaryx': {
-                        templateUrl: './home/home.template.html',
+                        templateUrl: './pages/home/home.template.html',
                         controller: 'homeController'
                     }
                 }
@@ -56,7 +56,7 @@ angular.module('myApp', [
                 url: 'alumnes',
                 views: {
                     'primaryx': {
-                        templateUrl: './alumnes/alumnes.template.html',
+                        templateUrl: './pages/alumnes/alumnes.template.html',
                         controller: 'alumnesController'
                     }
                 }
