@@ -1,10 +1,10 @@
-<div style="width:90vw" layout="row">
+<div layout="row">
     <div flex="30">
         <md-content>
-            <formulari-alumne loading="$scope.loadingCreate"></formulari-alumne>
+            <formulari-alumne :loading="loadingCreate"></formulari-alumne>
         </md-content>
     </div>
     <div layout="column" flex layout-padding layout-align="start center">
-        <cos-llistat items="alumnes" titol="Alumnes"></cos-llistat>
+        <cos-llistat :items="alumnes" titol="Alumnes" :error="error" :loading="loadingBody"></cos-llistat>
     </div>
 </div>

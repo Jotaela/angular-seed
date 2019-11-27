@@ -8,6 +8,8 @@ angular.module('components').
         },
         bindings: {
             items: '<',
+            error: '<',
+            loading: '<',
             titol: '@'
         }
     });

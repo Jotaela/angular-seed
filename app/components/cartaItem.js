@@ -3,7 +3,7 @@
 angular.module('components').
     component('cartaItem', {
         templateUrl: '/components/cartaItem.template.html',
-        controller: function cosLlistatController($scope, $mdDialog) {
+        controller: function cartaItemController($scope, $mdDialog) {
 
             var deleteItem = function (id) {
                 $scope.loadingDelete = id;

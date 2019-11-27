@@ -4,8 +4,9 @@
         <filtres-ordenacio filtre="filtre" ordre="ordre" opcions="opcions" opcioperdefecte="Nom"></filtres-ordenacio>
     </div>
     <div layout="row" layout-align="center start" layout-wrap flex>
-        <md-progress-circular ng-if="loadingBody" md-diameter="70" md-mode="indeterminate" ng-disabled="false" value="..."></md-progress-circular>
-        <error text="Pareix que hem tingut un error accedint a les dades dels professors :,(" layout-padding layout="column" layout-align="start center" ng-if="error"></error>
-        <carta-item item="item" ng-if="!error" ng-repeat="item in $ctrl.items | orderBy: ordre | filter: filtre"></carta-item>
+        <llista-buida ng-if="$ctrl.items.length == 0"></llista-buida>
+        <md-progress-circular :ng-if="$ctrl.loading" md-diameter="70" md-mode="indeterminate" ng-disabled="false" value="..."></md-progress-circular>
+        <error-message text="Pareix que hem tingut un error accedint a les dades dels {{$ctrl.titol}} :,(" layout-padding :ng-if="$ctrl.error"></error-message>
+        <carta-item item="item" :ng-if="!$ctrl.error" ng-repeat="item in $ctrl.items | orderBy: ordre | filter: filtre"></carta-item>
     </div>
 </div>

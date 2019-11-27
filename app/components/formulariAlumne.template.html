@@ -19,7 +19,7 @@
         </md-input-container>
         <md-input-container class="md-block">
             <label>DNI</label>
-            <input type="text" ng-pattern="/[0-9]{8}[A-Z]{1}/" md-maxlength="9" required name="Dni" ng-model="nouAlumne.Dni">
+            <input type="text" :ng-pattern="/[0-9]{8}[A-Z]{1}/" md-maxlength="9" required name="Dni" ng-model="nouAlumne.Dni">
             <div ng-messages="nouAlumneForm.Dni.$error">
                 <div ng-message="required">Aquest camp és requerit.</div>
                 <div ng-message="md-maxlength">El DNI ha d'estar ben formatat (NNNNNNNNA)</div>
@@ -28,7 +28,7 @@
         </md-input-container>
         <md-input-container class="md-block">
             <label>Tel</label>
-            <input ng-blur="" type="text" ng-pattern="/[0-9]{9}/" md-maxlength="9" required name="Tel" ng-model="nouAlumne.Tel">
+            <input ng-blur="" type="text" :ng-pattern="/[0-9]{9}/" md-maxlength="9" required name="Tel" ng-model="nouAlumne.Tel">
             <div ng-messages="nouAlumneForm.Tel.$error">
                 <div ng-message="required">Aquest camp és requerit.</div>
                 <div ng-message="pattern">El Telèfon ha d'estar ben formatat (NNNNNNNNN)</div>
@@ -37,8 +37,8 @@
         </md-input-container>
         <div>
             <md-button layout="row" layout-align="center center" class="md-primary md-raised" type="submit" aria-label="Enviar Fromulari">
-                <div ng-if="!loadingCreate">Crear</div>
-                <md-progress-circular class="md-primary md-hue-1" ng-if="loadingCreate" md-diameter="25" md-mode="indeterminate" value="..."></md-progress-circular>
+                <div :ng-if="!$ctrl.loading">Crear</div>
+                <md-progress-circular class="md-primary md-hue-1" :ng-if="$ctrl.loading" md-diameter="25" md-mode="indeterminate" value="..."></md-progress-circular>
             </md-button>
         </div>
     </form>

@@ -1,10 +1,9 @@
-<md-card layout-padding class="md-priamry">
-    <md-card-title>
-        <md-card-title-text class="md-headline">
-            ID: {{ $ctrl.item.Id }}
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
+<md-card class="md-priamry">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 flex md-truncate>ID: {{ $ctrl.item.Id }}</h2>
+        </div>
+    </md-toolbar>
         <md-list>
             <md-list-item>
                 Nom: <p ng-if="editing !=  $ctrl.item.Id + 'Nom'" ng-dblclick="initUpdateItem($ctrl.item , 'Nom')">{{  $ctrl.item.Nom }}</p>

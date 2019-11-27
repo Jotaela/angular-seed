@@ -43,6 +43,7 @@ angular.module('alumnes')
                         ToastCreate();
                     }, function () {
                         $scope.error = true;
+                        $scope.loadingCreate = false;
                     });
                 }
             }
@@ -52,7 +53,7 @@ angular.module('alumnes')
                 alumnesAPI.delete(id).then(function () {
                     alumnesAPI.get().then(function (response) {
                         $scope.alumnes = response.data;
-                        ToastCreate();
+                        ToastDelete();
                         $scope.error = false;
                     }, function () {
                         $scope.error = true;
@@ -65,7 +66,7 @@ angular.module('alumnes')
             function updateAlumne(event, id, canviAlumne) {
                 alumnesAPI.update(id, canviAlumne).then(function () {
                     fresh();
-                    ToastDelete();
+                    ToastUpdate();
                 }, function () {
                     $scope.error = true;
                 });
@@ -127,6 +128,17 @@ angular.module('alumnes')
                 $mdToast.show(
                     $mdToast.simple()
                         .textContent('S\'ha esborrat l\'alumne!')
+                        .position(pinTo)
+                        .toastClass('md-error')
+                        .hideDelay(3000));
+            };
+
+            var ToastUpdate = function () {
+                var pinTo = getToastPosition();
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('S\'ha actualitzat l\'alumne!')
                         .position(pinTo)
                         .toastClass('md-error')
                         .hideDelay(3000));

@@ -7,7 +7,7 @@ angular.module('myApp', [
     'ngMessages',
     'home',
     'header',
-    'primary',
+    'landing-page',
     'professors',
     'alumnes',
     'components'
@@ -24,8 +24,8 @@ angular.module('myApp', [
                 url: '/',
                 views: {
                     'primary': {
-                        templateUrl: './pages/primary/primary.template.html',
-                        controller: 'primaryController'
+                        templateUrl: './pages/landingPage/landingPage.template.html',
+                        controller: 'landingPageController'
                     },
                     'header': {
                         templateUrl: './pages/header/header.template.html',

@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('professors').
-    component('formulariProfessor', {
+angular.module('professors')
+    .component('formulariProfessor', {
         templateUrl: '/components/formulariProfessor.template.html',
-        controller: function cosLlistatController($scope) {
+        controller: function formulariProfessorController($scope) {
             $scope.crearProfe = function (isValid) {
                 var nouProfessor = {
                     Nom: "",
@@ -12,15 +12,10 @@ angular.module('professors').
                     Tel: ""
                 };
                 if (isValid) {
-                    $scope.loadingCreate = true;
                     var nouProfe = {Nom: $scope.nouProfe.Nom, Cognom: $scope.nouProfe.Cognom, Dni: $scope.nouProfe.Dni, Tel: $scope.nouProfe.Tel};
                     $scope.$emit('created', isValid, nouProfe);
                     resetForm();
                 }
-            };
-
-            $scope.updateProfessor = function (id, profe) {
-                $scope.$emit('updated', id, profe);
             };
 
             var resetForm = function () {
@@ -41,5 +36,6 @@ angular.module('professors').
 
         },
         bindings: {
+            loading: '<'
         }
     });

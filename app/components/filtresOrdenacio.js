@@ -3,7 +3,7 @@
 angular.module('components').
     component('filtresOrdenacio', {
         templateUrl: '/components/filtresOrdenacio.template.html',
-        controller: function cosLlistatController($scope) {
+        controller: function filtresOrdenacioController($scope) {
         },
         bindings: {
             filtre: '=',
