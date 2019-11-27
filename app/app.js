@@ -66,7 +66,7 @@ angular.module('myApp', [
 
 
             $mdThemingProvider.theme('temaPrincipal').primaryPalette('blue')
-                .accentPalette('yellow')
+                .accentPalette('orange')
                 .warnPalette('red')
                 .backgroundPalette('grey');
             $mdThemingProvider.setDefaultTheme('temaPrincipal');
