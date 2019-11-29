@@ -1,6 +1,9 @@
 <div layout="column" layout-align="start center">
     <h1 class="md-display-2">{{$ctrl.titol}}</h1>
-    <div style="width:100vw">
+    <div style="width:100vw" layout="row" layout-align="start start">
+        <md-button ng-click="refresh()" class="md-accent md-raised md-icon-button" style="margin-right: 50px">
+            <md-icon md-svg-icon="./resources/img/autorenew-24px.svg"></md-icon>
+        </md-button>
         <filtres-ordenacio filtre="filtre" ordre="ordre" opcions="opcions" opcioperdefecte="Nom"></filtres-ordenacio>
     </div>
     <div layout="row" layout-align="center start" layout-wrap flex>

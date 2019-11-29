@@ -19,8 +19,11 @@ angular.module('professors')
             $scope.$on('removed', deleteProfessor);
             $scope.$on('updated', updateProfessor);
             $scope.$on('created', crearProfe);
+            $scope.$on('refresh', fresh);
 
-            var fresh = function () {
+            function fresh () {
+                $scope.loadingBody = true;
+                $scope.error = false;
                 professorsAPI.get().then(function (response) {
                     $scope.error = false;
                     $scope.professors = response.data;
@@ -31,7 +34,7 @@ angular.module('professors')
                     $scope.loadingBody = false;
                     $scope.error = true;
                 });
-            };
+            }
             fresh();
 
             function crearProfe(event, isValid, nouProfe) {

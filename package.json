@@ -16,7 +16,8 @@
     "globalize": "^1.4.2",
     "html5-boilerplate": "0.0.1",
     "jquery": "^3.4.1",
-    "knockout": "^3.5.0"
+    "knockout": "^3.5.0",
+    "material-design-icons": "^3.0.1"
   },
   "devDependencies": {
     "angular-material": "^1.1.20",

@@ -21,8 +21,11 @@ angular.module('alumnes')
             $scope.$on('removed', deleteAlumne);
             $scope.$on('updated', updateAlumne);
             $scope.$on('created', crearAlumne);
+            $scope.$on('refresh', fresh);
 
-            var fresh = function () {
+            function fresh () {
+                $scope.loadingBody = true;
+                $scope.error = false;
                 alumnesAPI.get().then(function (response) {
                     $scope.alumnes = response.data;
                     $scope.loadingBody = false;
