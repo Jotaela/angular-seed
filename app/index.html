@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Jquery (per a DevExtreme)-->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- Dependencia Devextreme -->
+    <script type="text/javascript" src="lib/knockout/build/output/knockout-latest.js"></script>
+
     <!--Angular.js-->
     <script src="lib/angular/angular.js"></script>
 
@@ -24,8 +30,26 @@
 
     <!-- Reference the JSZip script if you need client-side export -->
     <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
     <!-- Router dependencies -->
     <script src="lib/angular-route/angular-route.js"></script>
+
+    <!-- Reference Globalize if you need to localize app or your app uses custom date, number or currency formatting -->
+    <script type="text/javascript" src="lib/cldrjs/dist/cldr.js"></script>
+    <script type="text/javascript" src="lib/cldrjs/dist/cldr/event.js"></script>
+    <script type="text/javascript" src="lib/cldrjs/dist/cldr/supplemental.js"></script>
+    <script type="text/javascript" src="lib/globalize/dist/globalize.js"></script>
+    <script type="text/javascript" src="lib/globalize/dist/globalize/message.js"></script>
+    <script type="text/javascript" src="lib/globalize/dist/globalize/number.js"></script>
+    <script type="text/javascript" src="lib/globalize/dist/globalize/currency.js"></script>
+    <script type="text/javascript" src="lib/globalize/dist/globalize/date.js"></script>
+    <!-- Reference the JSZip script if you need client-side export -->
+    <script type="text/javascript" src="lib/jszip/dist/jszip.js"></script>
+    <!-- DevExtreme themes -->
+    <link rel="stylesheet" type="text/css" href="lib/devextreme/dist/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="lib/devextreme/dist/css/dx.light.css" />
+    <!-- A DevExtreme library -->
+    <script type="text/javascript" src="lib/devextreme/dist/js/dx.all.js"></script>
 
     <!--myApp references-->
     <link rel="stylesheet" href="app.css">
@@ -40,6 +64,8 @@
     <script src="pages/professors/professors.controller.js"></script>
     <script src="pages/alumnes/alumnes.module.js"></script>
     <script src="pages/alumnes/alumnes.controller.js"></script>
+    <script src="pages/grafica/grafica.module.js"></script>
+    <script src="pages/grafica/grafica.controller.js"></script>
     <script src="./components/components.module.js"></script>
     <script src="components/cosLlistat.js"></script>
     <script src="components/cartaItem.js"></script>
@@ -53,7 +79,6 @@
     <script src="./serveis/serveis.module.js"></script>
     <script src="./serveis/professorsAPI.factory.js"></script>
     <script src="./serveis/alumnesAPI.factory.js"></script>
-
 
     <!-- Directives -->
     <script src="./directives/directives.module.js"></script>

@@ -7,9 +7,11 @@ angular.module('header')
             $state.go(stateName);
             $scope.currentItem="";
         };
+
         $scope.$watch(function () {
             return $state.current.name;
         }, function (newValue, oldValue) {
             $scope.currentItem = newValue;
         });
+
     }]);

@@ -10,6 +10,7 @@ angular.module('myApp', [
     'landing-page',
     'professors',
     'alumnes',
+    'grafica',
     'components'
 ])
     .config([
@@ -58,6 +59,14 @@ angular.module('myApp', [
                     'primaryx': {
                         templateUrl: './pages/alumnes/alumnes.template.html',
                         controller: 'alumnesController'
+                    }
+                }
+            }).state('landing-page.grafica', {
+                url: 'grafica',
+                views: {
+                    'primaryx': {
+                        templateUrl: './pages/grafica/grafica.template.html',
+                        controller: 'graficaController'
                     }
                 }
             });
