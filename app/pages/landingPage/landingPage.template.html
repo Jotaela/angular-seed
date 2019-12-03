@@ -4,7 +4,7 @@
         <h2 class="md-display-1" style="text-align: center">Gaudeix de totes les possibilitats que t'ofereix aquesta eina!!</h2>
         <div style="height: 50px"></div>
         <div layout="row" layout-align="space-around start" layout-wrap>
-            <md-card style="width: 20vw" md-colors="{background: 'primary'}">
+            <md-card style="width: 300px" md-colors="{background: 'primary'}">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">Afegeix noves Entrades!!!!</span>
@@ -13,7 +13,7 @@
                     </md-card-title-text>
                 </md-card-title>
             </md-card>
-            <md-card style="width: 20vw" md-colors="{background: 'accent'}">
+            <md-card style="width: 300px" md-colors="{background: 'accent'}">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">Edita les entrades ja inserides!!</span>
@@ -22,7 +22,7 @@
                     </md-card-title-text>
                 </md-card-title>
             </md-card>
-            <md-card style="width: 20vw" md-colors="{background: 'warn'}">
+            <md-card style="width: 300px" md-colors="{background: 'warn'}">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">Llista el contigut de les diferents taules!!</span>
@@ -31,11 +31,21 @@
                     </md-card-title-text>
                 </md-card-title>
             </md-card>
+            <md-card style="width: 300px" md-colors="{background: 'primary'}">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Consulta les nostres gràfiques per a estar a l'ordre del dia!!</span>
+                        <span class="md-subhead">Amb la potencia de DevExtreme podem consultar les informacions mésc omplexes de la forma més simple possible, consulta les nostres gràfiques ja!!!</span>
+                        <i class="material-icons md-48">show_chart</i>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
         </div>
         <div style="height: 50px"></div>
-        <div layout="row" layout-align="space-around start">
+        <div layout="row" layout-align="space-around start" layout-wrap>
             <md-button class="md-accent md-raised" ng-click="goTo('landing-page.professors')"><p class="md-title">EDITA LA TAULA PROFESSORS</p></md-button>
             <md-button class="md-primary md-raised" ng-click="goTo('landing-page.alumnes')"><p class="md-title">EDITA LA TAULA ALUMNES</p></md-button>
+            <md-button class="md-warn md-raised" ng-click="goTo('landing-page.grafica')"><p class="md-title">VISITA LES GRAFIQUES</p></md-button>
         </div>
     </div>
 </div>
