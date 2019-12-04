@@ -3,7 +3,7 @@
 angular.module('components')
     .component('graficaChart', {
     templateUrl: './components/graficaChart.template.html',
-    controller: function graficaChartController($scope, contarAPI) {
+    controller: function graficaChartController($scope, contarAPI, $q) {
         $scope.checkBoxValue=true;
         $scope.menuInstance = {};
         var store = new DevExpress.data.CustomStore({

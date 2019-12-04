@@ -11,7 +11,8 @@ angular.module('myApp', [
     'professors',
     'alumnes',
     'grafica',
-    'components'
+    'components',
+    'secretaris'
 ])
     .config([
         '$stateProvider',
@@ -67,6 +68,14 @@ angular.module('myApp', [
                     'primaryx': {
                         templateUrl: './pages/grafica/grafica.template.html',
                         controller: 'graficaController'
+                    }
+                }
+            }).state('landing-page.secretaris', {
+                url: 'secretaris',
+                views: {
+                    'primaryx': {
+                        templateUrl: './pages/secretaris/secretaris.template.html',
+                        controller: 'secretarisController'
                     }
                 }
             });

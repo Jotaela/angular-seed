@@ -10,6 +10,6 @@
         <llista-buida ng-if="$ctrl.items.length == 0"></llista-buida>
         <md-progress-circular :ng-if="$ctrl.loading" md-diameter="70" md-mode="indeterminate" ng-disabled="false" value="..."></md-progress-circular>
         <error-message text="Pareix que hem tingut un error accedint a les dades dels {{$ctrl.titol}} :,(" layout-padding :ng-if="$ctrl.error"></error-message>
-        <carta-item item="item" :ng-if="!$ctrl.error" ng-repeat="item in $ctrl.items | orderBy: ordre | filter: filtre"></carta-item>
+        <carta-item item="item" :ng-if="!$ctrl.error || !$ctrl.loading" ng-repeat="item in $ctrl.items | orderBy: ordre | filter: filtre"></carta-item>
     </div>
 </div>
