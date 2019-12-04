@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('grafica', ['dx']);
+angular.module('grafica', ['dx', 'serveis']);
