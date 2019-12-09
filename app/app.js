@@ -7,7 +7,6 @@ angular.module('myApp', [
     'ngMessages',
     'home',
     'header',
-    'menu',
     'landing-page',
     'professors',
     'alumnes',
@@ -35,8 +34,8 @@ angular.module('myApp', [
                         controller: 'headerController'
                     },
                     'menu': {
-                        templateUrl: './pages/menu/menu.template.html',
-                        controller: 'menuController'
+                        templateUrl: './pages/header/menu.template.html',
+                        controller: 'headerController'
                     }
                 }
             }).state('landing-page.professors', {

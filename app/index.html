@@ -60,8 +60,6 @@
     <script src="pages/home/home.controller.js"></script>
     <script src="pages/header/header.module.js"></script>
     <script src="pages/header/header.controller.js"></script>
-    <script src="pages/menu/menu.module.js"></script>
-    <script src="pages/menu/menu.controller.js"></script>
     <script src="pages/professors/professors.module.js"></script>
     <script src="pages/professors/professors.controller.js"></script>
     <script src="pages/alumnes/alumnes.module.js"></script>
@@ -97,9 +95,9 @@
     <script src="./directives/ngEnter.directive.js"></script>
 
 </head>
-<body>
+<body layout="column" style="overflow: hidden;">
     <div ui-view="header"></div>
     <div ui-view="menu"></div>
-    <div ui-view="primary" layout-padding></div>
+    <md-content ui-view="primary" flex layout-padding style="overflow: auto;"></md-content>
 </body>
 </html>

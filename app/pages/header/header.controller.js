@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('header')
-    .controller('headerController', ['$state', '$scope', function headerController($state, $scope) {
+    .controller('headerController', ['$state', '$scope', '$mdSidenav', function headerController($state, $scope, $mdSidenav) {
+
+        $scope.toggle = function (id) {
+            $mdSidenav(id).toggle();
+        };
 
         $scope.goTo = function (stateName) {
             $state.go(stateName);

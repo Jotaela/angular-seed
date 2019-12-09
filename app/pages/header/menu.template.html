@@ -1,0 +1,26 @@
+<md-sidenav md-component-id="left"
+            class="md-sidenav-left md-whiteframe-z2 md-hue-1"
+            layout="column"
+            style="position:absolute!important">
+    <md-nav-bar class="md-primary" nav-bar-aria-label="navigation links">
+        <div layout="column" layout-align="center center">
+            <md-button ng-click="toggle('left')" class="md-icon-button" aria-label="landing-page">
+                <i class="material-icons">menu</i>
+            </md-button>
+        </div>
+        <div layout="column" layout-align="center center">
+            <md-button ng-click="goTo('landing-page')" class="md-icon-button" aria-label="landing-page">
+                <md-icon md-svg-icon="../../resources/img/speed.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-nav-bar>
+    <div flex="60" layout="column" layout-align="center center">
+        <md-list style="overflow: auto;">
+            <md-list-item><md-button>Home</md-button></md-list-item>
+            <md-list-item><md-button>Professors</md-button></md-list-item>
+            <md-list-item><md-button>Alumnes</md-button></md-list-item>
+            <md-list-item><md-button>Secretaris</md-button></md-list-item>
+            <md-list-item><md-button>Gràfiques</md-button></md-list-item>
+        </md-list>
+    </div>
+</md-sidenav>
