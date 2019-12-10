@@ -2,25 +2,32 @@
             class="md-sidenav-left md-whiteframe-z2 md-hue-1"
             layout="column"
             style="position:absolute!important">
-    <md-nav-bar class="md-primary" nav-bar-aria-label="navigation links">
+    <div layout="row" class="md-nav-bar" nav-bar-aria-label="navigation links" md-colors="{background: 'primary'}">
         <div layout="column" layout-align="center center">
-            <md-button ng-click="toggle('left')" class="md-icon-button" aria-label="landing-page">
-                <i class="material-icons">menu</i>
-            </md-button>
+            <div>
+                <md-button ng-click="toggle('left')" class="md-icon-button" aria-label="landing-page">
+                    <md-icon md-svg-icon="../../resources/img/menu-24px.svg"></md-icon>
+                </md-button>
+            </div>
         </div>
         <div layout="column" layout-align="center center">
-            <md-button ng-click="goTo('landing-page')" class="md-icon-button" aria-label="landing-page">
-                <md-icon md-svg-icon="../../resources/img/speed.svg"></md-icon>
-            </md-button>
+            <div>
+                <md-button ng-click="goTo('landing-page'); toggle('left')" class="md-icon-button" aria-label="landing-page">
+                    <md-icon md-svg-icon="../../resources/img/speed.svg"></md-icon>
+                </md-button>
+            </div>
         </div>
-    </md-nav-bar>
-    <div flex="60" layout="column" layout-align="center center">
-        <md-list style="overflow: auto;">
-            <md-list-item><md-button>Home</md-button></md-list-item>
-            <md-list-item><md-button>Professors</md-button></md-list-item>
-            <md-list-item><md-button>Alumnes</md-button></md-list-item>
-            <md-list-item><md-button>Secretaris</md-button></md-list-item>
-            <md-list-item><md-button>Gràfiques</md-button></md-list-item>
-        </md-list>
+    </div>
+    <div flex layout="column" style="overflow: auto">
+        <div flex="20"></div>
+        <div layout="column" layout-align="start center">
+            <md-list style="overflow: auto;">
+                <md-list-item><md-button ng-click="goTo('landing-page.home'); toggle('left')">Home</md-button></md-list-item>
+                <md-list-item><md-button ng-click="goTo('landing-page.professors'); toggle('left')">Professors</md-button></md-list-item>
+                <md-list-item><md-button ng-click="goTo('landing-page.alumnes'); toggle('left')">Alumnes</md-button></md-list-item>
+                <md-list-item><md-button ng-click="goTo('landing-page.secretaris'); toggle('left')">Secretaris</md-button></md-list-item>
+                <md-list-item><md-button ng-click="goTo('landing-page.grafica'); toggle('left')">Gràfiques</md-button></md-list-item>
+            </md-list>
+        </div>
     </div>
 </md-sidenav>
