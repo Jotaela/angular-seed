@@ -5,7 +5,6 @@ angular.module('myApp', [
     'ui.router',
     'ngMaterial',
     'ngMessages',
-    'home',
     'header',
     'landing-page',
     'professors',
@@ -20,7 +19,7 @@ angular.module('myApp', [
         '$mdThemingProvider',
         function ($stateProvider,
             $urlRouterProvider,
-            $mdThemingProvider) {
+            $mdThemingProvider) { 
 
             $stateProvider.state('landing-page', {
                 url: '/',
@@ -44,14 +43,6 @@ angular.module('myApp', [
                     'primaryx': {
                         templateUrl: './pages/professors/professors.template.html',
                         controller: 'professorsController'
-                    }
-                }
-            }).state('landing-page.home', {
-                url: 'home',
-                views: {
-                    'primaryx': {
-                        templateUrl: './pages/home/home.template.html',
-                        controller: 'homeController'
                     }
                 }
             }).state('landing-page.alumnes', {

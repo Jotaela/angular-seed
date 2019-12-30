@@ -4,6 +4,25 @@ angular.module('alumnes')
     .component('formulariAlumne', {
     templateUrl: '/components/formulariAlumne.template.html',
     controller: function formulariAlumneController($scope) {
+
+        function resetForm () {
+            initNouAlumne();
+            $scope.nouAlumneForm.$setPristine();
+            $scope.nouAlumneForm.Nom.$touched = false;
+            $scope.nouAlumneForm.Cognom.$touched = false;
+            $scope.nouAlumneForm.Dni.$touched = false;
+            $scope.nouAlumneForm.Tel.$touched = false;
+        }
+        function initNouAlumne() {
+            $scope.nouAlumne = {
+                Nom: '',
+                Cognom: '',
+                Dni: '',
+                Tel: ''
+            };
+        }
+        initNouAlumne();
+
         $scope.crearAlumne = function (isValid) {
             var nouAlumne = {
                 Nom: "",
@@ -18,21 +37,6 @@ angular.module('alumnes')
             }
         };
 
-            var resetForm = function () {
-                $scope.nouAlumne.Nom = "";
-                $scope.nouAlumne.Cognom = "";
-                $scope.nouAlumne.Dni = "";
-                $scope.nouAlumne.Tel = "";
-                $scope.nouAlumneForm.$setPristine();
-                $scope.nouAlumneForm.Nom.$untouched = true;
-                $scope.nouAlumneForm.Nom.$touched = false;
-                $scope.nouAlumneForm.Cognom.$untouched = true;
-                $scope.nouAlumneForm.Cognom.$touched = false;
-                $scope.nouAlumneForm.Dni.$untouched = true;
-                $scope.nouAlumneForm.Dni.$touched = false;
-                $scope.nouAlumneForm.Tel.$untouched = true;
-                $scope.nouAlumneForm.Tel.$touched = false;
-            };
 
         },
         bindings: {
