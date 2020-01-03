@@ -19,7 +19,7 @@ angular.module('myApp', [
         '$mdThemingProvider',
         function ($stateProvider,
             $urlRouterProvider,
-            $mdThemingProvider) { 
+            $mdThemingProvider) {
 
             $stateProvider.state('landing-page', {
                 url: '/',
