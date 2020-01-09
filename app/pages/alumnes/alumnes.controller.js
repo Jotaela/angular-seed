@@ -29,20 +29,20 @@ angular.module('alumnes')
                 alumnesAPI.get().then(function (response) {
                     $scope.alumnes = response.data;
                     $scope.loadingBody = false;
-                    $scope.loadingCreate = false;
                     $scope.editing = null;
                 }, function () {
                     $scope.loadingBody = false;
                     $scope.error = true;
                 });
-            };
+            }
             fresh();
 
             function crearAlumne(event, isValid, nouAlumne) {
                 if (isValid) {
                     $scope.loadingCreate = true;
-                    alumnesAPI.post(nouAlumne).then(function () {
-                        fresh();
+                    alumnesAPI.post(nouAlumne).then(function (response) {
+                        $scope.alumnes.push(response.data)
+                        $scope.loadingCreate = false;
                         ToastCreate();
                     }, function () {
                         $scope.error = true;
@@ -51,24 +51,18 @@ angular.module('alumnes')
                 }
             }
 
-            function deleteAlumne(event, id) {
-                $scope.loadingDelete = id;
-                alumnesAPI.delete(id).then(function () {
-                    alumnesAPI.get().then(function (response) {
-                        $scope.alumnes = response.data;
-                        ToastDelete();
-                        $scope.error = false;
-                    }, function () {
-                        $scope.error = true;
-                    });
+            function deleteAlumne(event, alumne) {
+                $scope.loadingDelete = alumne.Id;
+                alumnesAPI.delete(alumne.Id).then(function () {
+                    $scope.alumnes.splice($scope.alumnes.indexOf(alumne), 1);
                 }, function () {
                     $scope.error = true;
                 });
             }
 
-            function updateAlumne(event, id, canviAlumne) {
-                alumnesAPI.update(id, canviAlumne).then(function () {
-                    fresh();
+            function updateAlumne(event, alumne, nouAlumne) {
+                alumnesAPI.update(alumne.Id, nouAlumne).then(function (response) {
+                    $scope.alumnes.splice($scope.alumnes.indexOf(alumne), 1, response.data);
                     ToastUpdate();
                 }, function () {
                     $scope.error = true;

@@ -5,25 +5,25 @@ angular.module('components').
         templateUrl: '/components/cartaItem.template.html',
         controller: function cartaItemController($scope, $mdDialog) {
 
-            var deleteItem = function (id) {
-                $scope.loadingDelete = id;
-                $scope.$emit('removed', id);
+            var deleteItem = function (alumne) {
+                $scope.loadingDelete = alumne.Id;
+                $scope.$emit('removed', alumne);
             };
 
-            $scope.updateItem = function (id, item) {
-                $scope.$emit('updated', id, item);
+            $scope.updateItem = function (item, nouItem) {
+                $scope.$emit('updated', item, nouItem);
             };
 
-            $scope.confirmDelete = function (ev, id) {
+            $scope.confirmDelete = function (ev, alumne) {
                 var confirm = $mdDialog.confirm()
-                    .title('Estas segur que vols esborrar al Professor amb la ID: ' + id + '?')
+                    .title('Estas segur que vols esborrar al Professor amb la ID: ' + alumne.Id + '?')
                     .textContent('El professor que has seleccionat ser� esborrat permanentment.')
                     .ariaLabel('Esborrar professor')
                     .targetEvent(ev)
                     .ok('Sips! UwU')
                     .cancel('Ups, cancela Pls');
                 $mdDialog.show(confirm).then(function () {
-                    deleteItem(id);
+                    deleteItem(alumne);
                 });
             };
 
@@ -37,11 +37,12 @@ angular.module('components').
 
             $scope.initUpdateItem = function (item, param) {
                 $scope.editing = item.Id + param;
-                $scope.canviItem.Id = item.Id;
-                $scope.canviItem.Nom = item.Nom;
-                $scope.canviItem.Cognom = item.Cognom;
-                $scope.canviItem.Dni = item.Dni;
-                $scope.canviItem.Tel = item.Tel;
+                $scope.canviItem = {
+                    Nom: item.Nom,
+                    Cognom: item.Cognom,
+                    Dni: item.Dni,
+                    Tel: item.Tel
+                };
             };
 
         },

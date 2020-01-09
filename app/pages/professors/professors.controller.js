@@ -41,7 +41,8 @@ angular.module('professors')
                 if (isValid) {
                     $scope.loadingCreate = true;
                     professorsAPI.post(nouProfe).then(function (response) {
-                        fresh();
+                        $scope.professors.push(nouProfe);
+                        $scope.loadingCreate = false;
                         ToastCreate();
                     }, function (error) {
                         $scope.error = true;

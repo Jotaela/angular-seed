@@ -7,24 +7,24 @@
         <md-list>
             <md-list-item>
                 Nom: <p ng-if="editing !=  $ctrl.item.Id + 'Nom'" ng-dblclick="initUpdateItem($ctrl.item , 'Nom')">{{  $ctrl.item.Nom }}</p>
-                <input ng-enter="updateItem($ctrl.item.Id, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Nom'" type="text" name="item.nom" ng-model="canviItem.Nom" />
+                <input ng-enter="updateItem($ctrl.item, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Nom'" type="text" name="item.nom" ng-model="canviItem.Nom" />
             </md-list-item>
             <md-list-item>
                 Cognom: <p ng-if="editing !=  $ctrl.item.Id + 'Cognom'" ng-dblclick="initUpdateItem($ctrl.item, 'Cognom')">{{  $ctrl.item.Cognom }}</p>
-                <input ng-enter="updateItem($ctrl.item.Id, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Cognom'" type="text" name="item.cognom" ng-model="canviItem.Cognom" />
+                <input ng-enter="updateItem($ctrl.item, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Cognom'" type="text" name="item.cognom" ng-model="canviItem.Cognom" />
             </md-list-item>
             <md-list-item>
                 Dni: <p ng-if="editing !=  $ctrl.item.Id + 'Dni'" ng-dblclick="initUpdateItem($ctrl.item, 'Dni')">{{  $ctrl.item.Dni }}</p>
-                <input ng-enter="updateItem($ctrl.item.Id, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Dni'" type="text" name="item.dni" ng-model="canviItem.Dni" />
+                <input ng-enter="updateItem($ctrl.item, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Dni'" type="text" name="item.dni" ng-model="canviItem.Dni" />
             </md-list-item>
             <md-list-item>
                 Tel: <p ng-if="editing !=  $ctrl.item.Id + 'Tel'" ng-dblclick="initUpdateItem($ctrl.item, 'Tel')">{{  $ctrl.item.Tel }}</p>
-                <input ng-enter="updateItem($ctrl.item.Id, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Tel'" type="text" name="item.Tel" ng-model="canviItem.Tel" />
+                <input ng-enter="updateItem($ctrl.item, canviItem)" ng-if="editing ==  $ctrl.item.Id + 'Tel'" type="text" name="item.Tel" ng-model="canviItem.Tel" />
             </md-list-item>
         </md-list>
     </md-card-content>
     <md-card-actions>
-        <md-button layout="row" layout-align="center center" class="md-warn md-raised" aria-label="Esborrar" ng-click="confirmDelete($event,  $ctrl.item.Id)">
+        <md-button layout="row" layout-align="center center" class="md-warn md-raised" aria-label="Esborrar" ng-click="confirmDelete($event,  $ctrl.item)">
             <div ng-if="loadingDelete !=  $ctrl.item.Id">Esborrar</div>
             <md-progress-circular class="md-warn md-hue-3" ng-if="loadingDelete ==  $ctrl.item.Id" md-diameter="25" md-mode="indeterminate" ng-disabled="false" value="..."></md-progress-circular>
         </md-button>
