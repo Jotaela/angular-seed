@@ -5,25 +5,25 @@ angular.module('components').
         templateUrl: '/components/cartaItem.template.html',
         controller: function cartaItemController($scope, $mdDialog) {
 
-            var deleteItem = function (alumne) {
-                $scope.loadingDelete = alumne.Id;
-                $scope.$emit('removed', alumne);
+            var deleteItem = function (item) {
+                $scope.loadingDelete = item.Id;
+                $scope.$emit('removed', item);
             };
 
             $scope.updateItem = function (item, nouItem) {
                 $scope.$emit('updated', item, nouItem);
             };
 
-            $scope.confirmDelete = function (ev, alumne) {
+            $scope.confirmDelete = function (ev, item) {
                 var confirm = $mdDialog.confirm()
-                    .title('Estas segur que vols esborrar al Professor amb la ID: ' + alumne.Id + '?')
+                    .title('Estas segur que vols esborrar al Professor amb la ID: ' + item.Id + '?')
                     .textContent('El professor que has seleccionat ser� esborrat permanentment.')
                     .ariaLabel('Esborrar professor')
                     .targetEvent(ev)
                     .ok('Sips! UwU')
                     .cancel('Ups, cancela Pls');
                 $mdDialog.show(confirm).then(function () {
-                    deleteItem(alumne);
+                    deleteItem(item);
                 });
             };
 

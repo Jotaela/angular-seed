@@ -55,6 +55,7 @@ angular.module('alumnes')
                 $scope.loadingDelete = alumne.Id;
                 alumnesAPI.delete(alumne.Id).then(function () {
                     $scope.alumnes.splice($scope.alumnes.indexOf(alumne), 1);
+                    ToastDelete();
                 }, function () {
                     $scope.error = true;
                 });

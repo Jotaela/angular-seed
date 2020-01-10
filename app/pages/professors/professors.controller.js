@@ -28,7 +28,6 @@ angular.module('professors')
                     $scope.error = false;
                     $scope.professors = response.data;
                     $scope.loadingBody = false;
-                    $scope.loadingCreate = false;
                     $scope.editing = null;
                 }, function (error) {
                     $scope.loadingBody = false;
@@ -51,20 +50,19 @@ angular.module('professors')
                 }
             }
 
-            function deleteProfessor(event, id){
-                $scope.loadingDelete = id;
-                professorsAPI.delete(id).then(function (response) {
-                    fresh();
+            function deleteProfessor(event, professor){
+                $scope.loadingDelete = professor.Id;
+                professorsAPI.delete(professor.Id).then(function (response) {
+                    $scope.professors.splice($scope.professors.indexOf(professor), 1);
                     ToastDelete();
                 }, function (error) {
                     $scope.error = true;
                 });
             }
 
-
-            function updateProfessor(event, id, canviProfessor) {
-                professorsAPI.update(id, canviProfessor).then(function (response) {
-                    fresh();
+            function updateProfessor(event, anticProfe, canviProfessor) {
+                professorsAPI.update(anticProfe.Id, canviProfessor).then(function (response) {
+                    $scope.professors.splice($scope.professors.indexOf(anticProfe), 1, response.data);
                     ToastUpdate();
                 }, function (error) {
                     $scope.error = true;

@@ -20,7 +20,6 @@ angular.module('secretaris')
                 $scope.error = false;
                 $scope.secretaris = response.data;
                 $scope.loadingBody = false;
-                $scope.loadingCreate = false;
                 $scope.editing = null;
             }, function (error) {
                 $scope.loadingBody = false;
@@ -29,11 +28,11 @@ angular.module('secretaris')
         }
         fresh();
 
-        function crearSecretari(event, isValid, nouProfe) {
+        function crearSecretari(event, isValid, nouSecretari) {
             if (isValid) {
                 $scope.loadingCreate = true;
-                secretarisAPI.post(nouProfe).then(function (response) {
-                    fresh();
+                secretarisAPI.post(nouSecretari).then(function (response) {
+                    $scope.secretaris.push(response.data);
                     ToastCreate();
                 }, function (error) {
                     $scope.error = true;
@@ -42,10 +41,10 @@ angular.module('secretaris')
             }
         }
 
-        function deleteSecretari(event, id){
-            $scope.loadingDelete = id;
-            secretarisAPI.delete(id).then(function (response) {
-                fresh();
+        function deleteSecretari(event, secretari){
+            $scope.loadingDelete = secretari.Id;
+            secretarisAPI.delete(secretari.Id).then(function (response) {
+                $scope.secretaris.splice($scope.secretaris.indexOf(secretari), 1);
                 ToastDelete();
             }, function (error) {
                 $scope.error = true;
@@ -53,9 +52,9 @@ angular.module('secretaris')
         }
 
 
-        function updateSecretari(event, id, canviProfessor) {
-            secretarisAPI.update(id, canviProfessor).then(function (response) {
-                fresh();
+        function updateSecretari(event, anticSecretari, canviSecretari) {
+            secretarisAPI.update(anticSecretari.Id, canviSecretari).then(function (response) {
+                $scope.secretaris.splice($scope.secretaris.indexOf(anticSecretari), 1, response.data);
                 ToastUpdate();
             }, function (error) {
                 $scope.error = true;
